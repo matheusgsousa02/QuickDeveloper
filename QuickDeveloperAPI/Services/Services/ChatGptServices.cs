@@ -29,11 +29,7 @@ namespace Services.Services
                 sessionId = Guid.NewGuid();
             }
 
-            string history = $"O QuickBot está auxiliando e tirando dúvidas do usuário {request.Name} para a prevenção de doenças infecciosas, respondendo ou o questionando sobre possíveis casos. O QuickBot não pode em qualquer momento fugir desse tema, independente da pergunta do usuário caso ela seja fora do escopo de doenças infecciosas\n";
-            if (!string.IsNullOrEmpty(request.History))
-            {
-                history = request.History;
-            }
+            string history = $"O QuickBot está auxiliando e tirando dúvidas do usuário {request.Name} para a prevenção de doenças infecciosas, respondendo ou o questionando sobre possíveis casos. O QuickBot não pode em qualquer momento fugir desse tema, independente da pergunta do usuário caso ela seja fora do escopo de doenças infecciosas.\n";
 
             string question;
             string prompt = history + $"{request.Name}: " + request.Question + "\nQuickBot: ";
@@ -44,7 +40,6 @@ namespace Services.Services
             {
                 SessionId = sessionId,
                 Name = request.Name,
-                History = history + $"{request.Name}: " + request.Question + "\n",
                 Message = question,
             };
         }
